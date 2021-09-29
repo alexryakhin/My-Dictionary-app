@@ -1,0 +1,292 @@
+{
+    "word":"work",
+    "phonetic":"wəːk",
+    "phonetics":[
+        {
+            "text":"wəːk",
+            "audio":"//ssl.gstatic.com/dictionary/static/sounds/20200429/work--_gb_1.mp3"
+        }
+    ],
+    "origin":"Old English weorc (noun), wyrcan (verb), of Germanic origin; related to Dutch werk and German Werk, from an Indo-European root shared by Greek ergon .",
+    "meanings":[
+        {
+            "partOfSpeech":"noun",
+            "definitions":[
+                {
+                    "definition":"activity involving mental or physical effort done in order to achieve a purpose or result.",
+                    "example":"he was tired after a day's work",
+                    "synonyms":[
+                        "labour",
+                        "toil",
+                        "exertion",
+                        "effort",
+                        "slog",
+                        "drudgery",
+                        "the sweat of one's brow",
+                        "industry",
+                        "service",
+                        "grind",
+                        "sweat",
+                        "donkey work",
+                        "spadework",
+                        "elbow grease",
+                        "graft",
+                        "fag",
+                        "yakka",
+                        "travail",
+                        "moil"
+                    ],
+                    "antonyms":[
+                        "leisure",
+                        "rest"
+                    ]
+                },
+                {
+                    "definition":"a task or tasks to be undertaken.",
+                    "example":"they made sure the work was progressing smoothly",
+                    "synonyms":[
+                        "tasks",
+                        "jobs",
+                        "duties",
+                        "assignments",
+                        "commissions",
+                        "projects",
+                        "chores"
+                    ],
+                    "antonyms":[
+                        
+                    ]
+                },
+                {
+                    "definition":"a thing or things done or made; the result of an action.",
+                    "example":"her work hangs in all the main American collections",
+                    "synonyms":[
+                        "handiwork",
+                        "doing",
+                        "act",
+                        "deed",
+                        "feat",
+                        "performance"
+                    ],
+                    "antonyms":[
+                        
+                    ]
+                },
+                {
+                    "definition":"a place or premises in which industrial or manufacturing processes are carried out.",
+                    "example":"he found a job in the locomotive works",
+                    "synonyms":[
+                        "factory",
+                        "plant",
+                        "manufacturing complex",
+                        "mill",
+                        "foundry",
+                        "yard",
+                        "industrial unit",
+                        "business unit",
+                        "workshop",
+                        "shop"
+                    ],
+                    "antonyms":[
+                        
+                    ]
+                },
+                {
+                    "definition":"the operative part of a clock or other machine.",
+                    "example":"she could almost hear the tick of its works",
+                    "synonyms":[
+                        "mechanism",
+                        "machinery",
+                        "workings",
+                        "working parts",
+                        "parts",
+                        "movement",
+                        "action",
+                        "innards",
+                        "insides"
+                    ],
+                    "antonyms":[
+                        
+                    ]
+                },
+                {
+                    "definition":"a defensive structure.",
+                    "example":"just north of the fort were trenches and the freshly reconstructed patriot siege works",
+                    "synonyms":[
+                        
+                    ],
+                    "antonyms":[
+                        
+                    ]
+                },
+                {
+                    "definition":"the exertion of force overcoming resistance or producing molecular change.",
+                    "synonyms":[
+                        
+                    ],
+                    "antonyms":[
+                        
+                    ]
+                },
+                {
+                    "definition":"everything needed, desired, or expected.",
+                    "example":"the heavens put on a show: sheet lightning, hailstones, the works",
+                    "synonyms":[
+                        "everything",
+                        "the full treatment",
+                        "the lot",
+                        "the whole shooting match",
+                        "the whole (kit and) caboodle",
+                        "the whole shebang",
+                        "the whole nine yards",
+                        "the full monty",
+                        "the whole ball of wax"
+                    ],
+                    "antonyms":[
+                        
+                    ]
+                }
+            ]
+        },
+        {
+            "partOfSpeech":"verb",
+            "definitions":[
+                {
+                    "definition":"be engaged in physical or mental activity in order to achieve a result; do work.",
+                    "example":"she has been working so hard",
+                    "synonyms":[
+                        "toil",
+                        "labour",
+                        "exert oneself",
+                        "slave (away)",
+                        "plod away",
+                        "work one's fingers to the bone",
+                        "work like a Trojan/dog",
+                        "work day and night",
+                        "keep at it",
+                        "slog (away)",
+                        "beaver away",
+                        "plug away",
+                        "peg away",
+                        "put one's back into something",
+                        "work one's guts out",
+                        "work one's socks off",
+                        "knock oneself out",
+                        "sweat blood",
+                        "kill oneself",
+                        "graft",
+                        "fag",
+                        "bullock",
+                        "drudge",
+                        "travail",
+                        "moil",
+                        "work one's balls/arse off",
+                        "work one's ass/butt off"
+                    ],
+                    "antonyms":[
+                        "rest",
+                        "play"
+                    ]
+                },
+                {
+                    "definition":"(of a machine or system) function, especially properly or effectively.",
+                    "example":"his phone doesn't work unless he goes to a high point",
+                    "synonyms":[
+                        "function",
+                        "go",
+                        "run",
+                        "operate",
+                        "perform",
+                        "be in working order",
+                        "behave"
+                    ],
+                    "antonyms":[
+                        
+                    ]
+                },
+                {
+                    "definition":"(of a plan or method) have the desired result or effect.",
+                    "example":"the desperate ploy had worked",
+                    "synonyms":[
+                        "succeed",
+                        "be successful",
+                        "work out",
+                        "turn out well",
+                        "go as planned",
+                        "have the desired result",
+                        "get results",
+                        "be effective",
+                        "take effect",
+                        "be efficacious",
+                        "come off",
+                        "pay off",
+                        "do the trick",
+                        "do the business",
+                        "turn the trick"
+                    ],
+                    "antonyms":[
+                        "fail"
+                    ]
+                },
+                {
+                    "definition":"bring (a material or mixture) to a desired shape or consistency by hammering, kneading, etc.",
+                    "example":"work the mixture into a paste with your hands",
+                    "synonyms":[
+                        "knead",
+                        "squeeze",
+                        "form",
+                        "shape",
+                        "fashion",
+                        "mould",
+                        "model",
+                        "mix",
+                        "stir",
+                        "blend"
+                    ],
+                    "antonyms":[
+                        
+                    ]
+                },
+                {
+                    "definition":"move or cause to move gradually or with difficulty into another position.",
+                    "example":"comb hair from tip to root, working out the knots at the end",
+                    "synonyms":[
+                        "manoeuvre",
+                        "manipulate",
+                        "negotiate",
+                        "guide",
+                        "edge",
+                        "make",
+                        "thread",
+                        "wind",
+                        "weave"
+                    ],
+                    "antonyms":[
+                        
+                    ]
+                },
+                {
+                    "definition":"bring into a specified emotional state.",
+                    "example":"Harold had worked himself into a minor rage",
+                    "synonyms":[
+                        "stir (up)",
+                        "excite",
+                        "drive",
+                        "move",
+                        "spur",
+                        "rouse",
+                        "fire",
+                        "galvanize",
+                        "whip up",
+                        "inflame",
+                        "incite",
+                        "agitate"
+                    ],
+                    "antonyms":[
+                        
+                    ]
+                }
+            ]
+        }
+    ]
+}
