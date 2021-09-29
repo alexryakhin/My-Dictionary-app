@@ -50,6 +50,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51A11C72270498B700872ACF /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				51A11C74270498E800872ACF /* Quizes */,
+				51A11C73270498DE00872ACF /* Words */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		51A11C73270498DE00872ACF /* Words */ = {
+			isa = PBXGroup;
+			children = (
+				51A11C782704993200872ACF /* Models */,
+				51A11C772704992700872ACF /* ViewModels */,
+				51A11C762704992100872ACF /* Views */,
+			);
+			path = Words;
+			sourceTree = "<group>";
+		};
+		51A11C74270498E800872ACF /* Quizes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Quizes;
+			sourceTree = "<group>";
+		};
+		51A11C752704991000872ACF /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				51FDD2AC267EE03F00B946DB /* Info.plist */,
+				51FDD2A7267EE03F00B946DB /* Assets.xcassets */,
+				51E5F3712689F1DA009D31CE /* Wordword.json */,
+				51E5F3702689ED84009D31CE /* HelloWord.json */,
+				513F5C8D2703407B00A9B0F5 /* Bundle-Decodable.swift */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		51A11C762704992100872ACF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				51FDD2B2267EE08A00B946DB /* HomeView.swift */,
+				51FDD2B8267EE2F400B946DB /* AddView.swift */,
+				513F5C8B2703404700A9B0F5 /* WordCard.swift */,
+				513F5C8927032A2500A9B0F5 /* WordDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		51A11C772704992700872ACF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				51FDD2B4267EE0C700B946DB /* DictionaryViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		51A11C782704993200872ACF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				51FDD2B6267EE0D200B946DB /* Words.swift */,
+				513F5C87270313A500A9B0F5 /* WordModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		51FDD297267EE03D00B946DB = {
 			isa = PBXGroup;
 			children = (
@@ -70,18 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				51FDD2A3267EE03D00B946DB /* My_DictionaryApp.swift */,
-				51FDD2B2267EE08A00B946DB /* HomeView.swift */,
-				513F5C8927032A2500A9B0F5 /* WordDetailView.swift */,
-				51FDD2B4267EE0C700B946DB /* DictionaryViewModel.swift */,
-				51FDD2B8267EE2F400B946DB /* AddView.swift */,
-				51FDD2B6267EE0D200B946DB /* Words.swift */,
-				513F5C8D2703407B00A9B0F5 /* Bundle-Decodable.swift */,
-				513F5C8B2703404700A9B0F5 /* WordCard.swift */,
-				513F5C87270313A500A9B0F5 /* WordModel.swift */,
-				51E5F3702689ED84009D31CE /* HelloWord.json */,
-				51E5F3712689F1DA009D31CE /* Wordword.json */,
-				51FDD2A7267EE03F00B946DB /* Assets.xcassets */,
-				51FDD2AC267EE03F00B946DB /* Info.plist */,
+				51A11C72270498B700872ACF /* Screens */,
+				51A11C752704991000872ACF /* Resourses */,
 				51FDD2A9267EE03F00B946DB /* Preview Content */,
 			);
 			path = "My Dictionary";
