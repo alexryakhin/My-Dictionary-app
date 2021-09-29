@@ -14,6 +14,7 @@ struct WordDetailView: View {
     @State private var isEditingDefinition = false
     @State private var isShowAddExample = false
     @State private var exampleTextFieldStr = ""
+    @State private var examples = [String]()
     
     var body: some View {
         
@@ -43,22 +44,23 @@ struct WordDetailView: View {
                 } label: {
                     Text("Add example")
                 }
+                if !examples.isEmpty {
+                    ForEach(examples, id: \.self) { text in
+                        Text(text)
+                    }.onDelete(perform: removeExamples)
+                }
                 if isShowAddExample {
-                    TextField("Type an example here", text: $exampleTextFieldStr) {
-                        withAnimation {
+                    TextField("Type an example here", text: $exampleTextFieldStr, onCommit: {
+                        withAnimation(.easeInOut) {
                             //save
                             isShowAddExample = false
                             if let wordIndex = wordIndex, exampleTextFieldStr != "" {
-                                vm.words[wordIndex].examples.append(exampleTextFieldStr)
+                                examples.append(exampleTextFieldStr)
+                                vm.words[wordIndex].examples = examples
                             }
                             exampleTextFieldStr = ""
                         }
-                    }
-                }
-                if !wordData.examples.isEmpty {
-                    ForEach(wordData.examples, id: \.self) { text in
-                        Text(text)
-                    }.onDelete(perform: removeItems)
+                    })
                 }
             } header: {
                 Text("Examples")
@@ -83,11 +85,13 @@ struct WordDetailView: View {
                     }
                 }
             )
-            
             TextEditor(text: bindingWordDefinition)
                 .padding()
-            
-            
+        }
+        .onAppear {
+            if let wordIndex = wordIndex {
+                examples = vm.words[wordIndex].examples
+            }
         }
     }
     
@@ -106,9 +110,11 @@ struct WordDetailView: View {
         }
     }
     
-    private func removeItems(of offsets: IndexSet) {
+    private func removeExamples(of offsets: IndexSet) {
+        examples.remove(atOffsets: offsets)
+        
         if let wordIndex = wordIndex {
-            vm.words[wordIndex].examples.remove(atOffsets: offsets)
+            vm.words[wordIndex].examples = examples
         }
     }
     
