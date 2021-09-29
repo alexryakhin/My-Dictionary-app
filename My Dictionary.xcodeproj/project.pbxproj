@@ -79,7 +79,6 @@
 		51A11C752704991000872ACF /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
-				51FDD2AC267EE03F00B946DB /* Info.plist */,
 				51FDD2A7267EE03F00B946DB /* Assets.xcassets */,
 				51E5F3712689F1DA009D31CE /* Wordword.json */,
 				51E5F3702689ED84009D31CE /* HelloWord.json */,
@@ -135,6 +134,7 @@
 		51FDD2A2267EE03D00B946DB /* My Dictionary */ = {
 			isa = PBXGroup;
 			children = (
+				51FDD2AC267EE03F00B946DB /* Info.plist */,
 				51FDD2A3267EE03D00B946DB /* My_DictionaryApp.swift */,
 				51A11C72270498B700872ACF /* Screens */,
 				51A11C752704991000872ACF /* Resourses */,
@@ -367,6 +367,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dor.My-Dictionary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -389,6 +390,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dor.My-Dictionary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
