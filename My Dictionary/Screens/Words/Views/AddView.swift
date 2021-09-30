@@ -64,7 +64,7 @@ struct AddView: View {
                         .padding(.horizontal)
                         .disabled(vm.inputWord.isEmpty)
                 }
-                .background(Color.white.cornerRadius(10))
+                .background(Color("TableBackground").cornerRadius(10))
                 .padding(.horizontal)
                 
                 Section {

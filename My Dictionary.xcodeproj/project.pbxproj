@@ -80,7 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				514909402705B3140052881D /* MainTabView.swift */,
-				51A11C74270498E800872ACF /* Quizes */,
+				51A11C74270498E800872ACF /* Quizzes */,
 				51A11C73270498DE00872ACF /* Words */,
 			);
 			path = Screens;
@@ -96,7 +96,7 @@
 			path = Words;
 			sourceTree = "<group>";
 		};
-		51A11C74270498E800872ACF /* Quizes */ = {
+		51A11C74270498E800872ACF /* Quizzes */ = {
 			isa = PBXGroup;
 			children = (
 				514909472705CD3B0052881D /* ChooseDefinition */,
@@ -104,7 +104,7 @@
 				514909422705B4300052881D /* QuizesView.swift */,
 				5149094A2705CF6F0052881D /* QuizzesViewModel.swift */,
 			);
-			path = Quizes;
+			path = Quizzes;
 			sourceTree = "<group>";
 		};
 		51A11C752704991000872ACF /* Resourses */ = {
