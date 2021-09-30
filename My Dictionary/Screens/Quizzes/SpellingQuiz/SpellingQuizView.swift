@@ -27,11 +27,15 @@ struct SpellingQuizView: View {
             }
 
             Section {
-                TextField("Type here", text: $answerTextField, onCommit:  {
-                    withAnimation {
-                        checkAnswer()
-                    }
-                })
+                HStack {
+                    TextField("Type here", text: $answerTextField, onCommit:  {
+                        withAnimation {
+                            checkAnswer()
+                        }
+                    })
+                    Spacer()
+                    Text(randomWord?.partOfSpeech ?? "error").foregroundColor(.secondary)
+                }
             } footer: {
                 Text(isRightAnswer ? "" : incorrectMessage)
             }
