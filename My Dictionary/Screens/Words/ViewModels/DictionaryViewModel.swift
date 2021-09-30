@@ -39,7 +39,7 @@ class Dictionary: ObservableObject {
         }
     }
         
-    func getDocumentsDirectory() -> URL {
+    private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
@@ -47,7 +47,7 @@ class Dictionary: ObservableObject {
     func fetchData() {
         status = .loading
         if inputWord != "" {
-            let stringURL = "https://api.dictionaryapi.dev/api/v2/entries/en_US/\(inputWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))"
+            let stringURL = "https://api.dictionaryapi.dev/api/v2/entries/en/\(inputWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))"
             guard let url = URL(string: stringURL) else {
                 print("incorrect url")
                 return

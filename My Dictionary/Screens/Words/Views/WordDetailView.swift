@@ -17,8 +17,6 @@ struct WordDetailView: View {
     @State private var examples = [String]()
     
     var body: some View {
-        
-        
         List {
             Section {
                 Text(wordData.partOfSpeech)

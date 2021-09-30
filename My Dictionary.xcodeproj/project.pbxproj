@@ -11,6 +11,11 @@
 		513F5C8A27032A2500A9B0F5 /* WordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513F5C8927032A2500A9B0F5 /* WordDetailView.swift */; };
 		513F5C8C2703404700A9B0F5 /* WordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513F5C8B2703404700A9B0F5 /* WordCard.swift */; };
 		513F5C8E2703407B00A9B0F5 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513F5C8D2703407B00A9B0F5 /* Bundle-Decodable.swift */; };
+		514909412705B3140052881D /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514909402705B3140052881D /* MainTabView.swift */; };
+		514909432705B4300052881D /* QuizesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514909422705B4300052881D /* QuizesView.swift */; };
+		514909462705CD370052881D /* SpellingQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514909452705CD370052881D /* SpellingQuizView.swift */; };
+		514909492705CEBB0052881D /* ChooseDefinitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514909482705CEBB0052881D /* ChooseDefinitionView.swift */; };
+		5149094B2705CF6F0052881D /* QuizzesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5149094A2705CF6F0052881D /* QuizzesViewModel.swift */; };
 		51E5F3722689F1DA009D31CE /* Wordword.json in Resources */ = {isa = PBXBuildFile; fileRef = 51E5F3712689F1DA009D31CE /* Wordword.json */; };
 		51FDD2A4267EE03D00B946DB /* My_DictionaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FDD2A3267EE03D00B946DB /* My_DictionaryApp.swift */; };
 		51FDD2A8267EE03F00B946DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51FDD2A7267EE03F00B946DB /* Assets.xcassets */; };
@@ -26,6 +31,11 @@
 		513F5C8927032A2500A9B0F5 /* WordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailView.swift; sourceTree = "<group>"; };
 		513F5C8B2703404700A9B0F5 /* WordCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCard.swift; sourceTree = "<group>"; };
 		513F5C8D2703407B00A9B0F5 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
+		514909402705B3140052881D /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		514909422705B4300052881D /* QuizesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizesView.swift; sourceTree = "<group>"; };
+		514909452705CD370052881D /* SpellingQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingQuizView.swift; sourceTree = "<group>"; };
+		514909482705CEBB0052881D /* ChooseDefinitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDefinitionView.swift; sourceTree = "<group>"; };
+		5149094A2705CF6F0052881D /* QuizzesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesViewModel.swift; sourceTree = "<group>"; };
 		51E5F3702689ED84009D31CE /* HelloWord.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HelloWord.json; sourceTree = "<group>"; };
 		51E5F3712689F1DA009D31CE /* Wordword.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Wordword.json; sourceTree = "<group>"; };
 		51FDD2A0267EE03D00B946DB /* My Dictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Dictionary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,9 +60,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		514909442705CD090052881D /* SpellingQuiz */ = {
+			isa = PBXGroup;
+			children = (
+				514909452705CD370052881D /* SpellingQuizView.swift */,
+			);
+			path = SpellingQuiz;
+			sourceTree = "<group>";
+		};
+		514909472705CD3B0052881D /* ChooseDefinition */ = {
+			isa = PBXGroup;
+			children = (
+				514909482705CEBB0052881D /* ChooseDefinitionView.swift */,
+			);
+			path = ChooseDefinition;
+			sourceTree = "<group>";
+		};
 		51A11C72270498B700872ACF /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				514909402705B3140052881D /* MainTabView.swift */,
 				51A11C74270498E800872ACF /* Quizes */,
 				51A11C73270498DE00872ACF /* Words */,
 			);
@@ -72,6 +99,10 @@
 		51A11C74270498E800872ACF /* Quizes */ = {
 			isa = PBXGroup;
 			children = (
+				514909472705CD3B0052881D /* ChooseDefinition */,
+				514909442705CD090052881D /* SpellingQuiz */,
+				514909422705B4300052881D /* QuizesView.swift */,
+				5149094A2705CF6F0052881D /* QuizzesViewModel.swift */,
 			);
 			path = Quizes;
 			sourceTree = "<group>";
@@ -223,13 +254,18 @@
 			files = (
 				51FDD2B5267EE0C700B946DB /* DictionaryViewModel.swift in Sources */,
 				513F5C88270313A500A9B0F5 /* WordModel.swift in Sources */,
+				5149094B2705CF6F0052881D /* QuizzesViewModel.swift in Sources */,
 				51FDD2B7267EE0D200B946DB /* Words.swift in Sources */,
+				514909462705CD370052881D /* SpellingQuizView.swift in Sources */,
+				514909432705B4300052881D /* QuizesView.swift in Sources */,
 				51FDD2B9267EE2F400B946DB /* AddView.swift in Sources */,
 				51FDD2B3267EE08A00B946DB /* HomeView.swift in Sources */,
+				514909492705CEBB0052881D /* ChooseDefinitionView.swift in Sources */,
 				513F5C8E2703407B00A9B0F5 /* Bundle-Decodable.swift in Sources */,
 				513F5C8A27032A2500A9B0F5 /* WordDetailView.swift in Sources */,
 				51FDD2A4267EE03D00B946DB /* My_DictionaryApp.swift in Sources */,
 				513F5C8C2703404700A9B0F5 /* WordCard.swift in Sources */,
+				514909412705B3140052881D /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

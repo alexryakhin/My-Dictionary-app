@@ -18,7 +18,7 @@ struct AddView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Section {
+                VStack(alignment: .leading, spacing: 11) {
                     TextField("Enter your word", text: $vm.inputWord, onCommit: {
                         if !vm.inputWord.isEmpty {
                             if vm.definitions.isEmpty {
@@ -32,24 +32,16 @@ struct AddView: View {
                         }
                     })
                         .padding(.horizontal)
-                        .padding(.vertical, 9)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                        
+                        .padding(.top, 11)
+                    Divider().padding(.leading)
                     TextField("Word's definition", text: $descriptionField)
                         .padding(.horizontal)
-                        .padding(.vertical, 9)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+                    Divider().padding(.leading)
                     TextField("Part of speech", text: $partOfSpeech)
                         .autocapitalization(.none)
                         .padding(.horizontal)
-                        .padding(.vertical, 9)
-                        .background(Color.white)
                         .cornerRadius(10)
-                        .padding(.horizontal)
+                    Divider().padding(.leading)
                     Button(action: {
                         if !vm.inputWord.isEmpty {
                             if vm.definitions.isEmpty {
@@ -61,17 +53,19 @@ struct AddView: View {
                         } else {
                             print("type a word")
                         }
+                        hideKeyboard()
                     }, label: {
                         Text("Get definitions from the Internet")
-                            .bold()
+                            .padding(.vertical, 1)
                     })
-                        .padding(.vertical, 10)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
+                        .padding(.bottom, 11)
+                        .foregroundColor(vm.inputWord.isEmpty ? Color.gray.opacity(0.5) : .green)
                         .cornerRadius(10)
                         .padding(.horizontal)
+                        .disabled(vm.inputWord.isEmpty)
                 }
+                .background(Color.white.cornerRadius(10))
+                .padding(.horizontal)
                 
                 Section {
                     if vm.resultWordDetails != nil && vm.status == .ready {
@@ -81,21 +75,36 @@ struct AddView: View {
                                 partOfSpeech = partOfSpeechStr
                             })
                     } else if vm.status == .loading {
-                        Spacer().frame(height: 50)
-                        ProgressView()
-                        Spacer()
+                        VStack {
+                            Spacer().frame(height: 50)
+                            ProgressView()
+                            Spacer()
+                        }
+                        .onTapGesture {
+                            hideKeyboard()
+                        }
                     } else if vm.status == .blank {
-                        Spacer().frame(height: 50)
-                        Text("*After the data shows up here, tap on word's definition to fill it into definition's field")
-                            .font(.caption)
-                            .padding()
-                        Spacer()
+                        VStack {
+                            Spacer().frame(height: 50)
+                            Text("*After the data shows up here, tap on word's definition to fill it into definition's field")
+                                .font(.caption)
+                                .padding()
+                            Spacer()
+                        }
+                        .onTapGesture {
+                            hideKeyboard()
+                        }
                     } else if vm.status == .error {
-                        Spacer().frame(height: 50)
-                        Text("Couldn't get the word's data, check your spelling")
-                            .bold()
-                            .padding()
-                        Spacer()
+                        VStack {
+                            Spacer().frame(height: 50)
+                            Text("Couldn't get the word's data, check your spelling")
+                                .bold()
+                                .padding()
+                            Spacer()
+                        }
+                        .onTapGesture {
+                            hideKeyboard()
+                        }
                     }
                 }
                 
@@ -103,7 +112,12 @@ struct AddView: View {
             }
             
             .ignoresSafeArea(.all, edges: [.bottom])
-            .background(Color.blue.opacity(0.2).ignoresSafeArea())
+            .background(Color("Background")
+                            .ignoresSafeArea()
+                            .onTapGesture(perform: {
+                hideKeyboard()
+            })
+            )
             .navigationBarTitle("Add new word")
             .navigationBarItems(trailing: Button(action: {
                 if !vm.inputWord.isEmpty, !descriptionField.isEmpty {
@@ -122,6 +136,7 @@ struct AddView: View {
             .alert(isPresented: $showingAlert, content: {
                 Alert(title: Text("Error"), message: Text("You should enter a word and its description before saving it"), dismissButton: .default(Text("Got it")))
             })
+            
         }
     }
 }
