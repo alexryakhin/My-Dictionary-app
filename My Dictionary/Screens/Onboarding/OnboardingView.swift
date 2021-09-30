@@ -46,6 +46,7 @@ struct OnboardingView: View {
                 
                 Button {
                     //hide
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("Continue")
                         .bold()
