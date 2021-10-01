@@ -79,7 +79,23 @@ struct WordDetailView: View {
             
         }
         .navigationTitle(wordData.word)
-        .navigationBarItems(trailing: Button(action: {
+        .navigationBarItems(leading: Button(action: {
+            //favorites
+            if let wordIndex = wordIndex {
+                if vm.words[wordIndex].isFavorite {
+                    vm.words[wordIndex].isFavorite = false
+                } else {
+                    vm.words[wordIndex].isFavorite = true
+                }
+            }
+        }, label: {
+            Group {
+                if let wordIndex = wordIndex {
+                    Image(systemName: "\(vm.words[wordIndex].isFavorite ? "heart.fill" : "heart")")
+                }
+            }
+        }),
+           trailing: Button(action: {
             //delete
             presentationMode.wrappedValue.dismiss()
             removeWord()

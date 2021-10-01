@@ -15,6 +15,7 @@ struct WordModel: Codable, Identifiable {
     var examples: [String]
     var wordElement: WordElement?
     var date = Date()
+    var isFavorite = false
     
     static let wordExample = WordModel(word: "work", description: "be engaged in physical or mental activity in order to achieve a result", partOfSpeech: "verb", examples: ["you should work harder if you wanna get better job"], wordElement: Bundle.main.decode("Wordword.json"))
 }

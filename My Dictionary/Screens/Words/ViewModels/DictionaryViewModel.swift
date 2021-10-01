@@ -140,6 +140,10 @@ class Dictionary: ObservableObject {
                     self.filterState = .pronoun
                     startArray = self.words
                     startArray.removeAll(where: {$0.partOfSpeech != "pronoun"})
+                case .favorite:
+                    self.filterState = .favorite
+                    startArray = self.words
+                    startArray.removeAll(where: {$0.isFavorite != true })
                 }
                 
                 self.filteredWords = startArray
@@ -193,4 +197,5 @@ enum FilterCases {
     case exclamation
     case conjunction
     case pronoun
+    case favorite
 }

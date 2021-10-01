@@ -27,7 +27,7 @@ struct HomeView: View {
                                 .foregroundColor(.secondary)
                                 .padding(.bottom, 60)
                             
-                            Text("Begin to add words to your list by tapping on plus icon in upper left corner")
+                            Text("Begin to add words to your list\nby tapping on plus icon in upper left corner")
                                 .padding(20)
                                 .multilineTextAlignment(.center)
                                 .lineSpacing(10)
@@ -164,6 +164,15 @@ struct HomeView: View {
                             Image(systemName: "checkmark")
                         }
                         Text("pronoun")
+                    }
+                    Button {
+                        vm.isFiltered = true
+                        vm.filter(by: .favorite)
+                    } label: {
+                        if vm.filterState == .favorite {
+                            Image(systemName: "checkmark")
+                        }
+                        Text("favorite")
                     }
                 } label: {
                     Label {
