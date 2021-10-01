@@ -14,17 +14,14 @@ class Dictionary: ObservableObject {
     @Published var inputWord: String = ""
     @Published var resultWordDetails: WordElement?
     @Published var sortingState: SortingCases = .def
+    @Published var filterState: FilterCases = .none
+    @Published var filteredWords: [WordModel] = []
+    @Published var isFiltered: Bool = false
     @Published var definitions: [String] = []
     @Published var words: [WordModel] = [] {
         didSet {
-            do {
-                let fileName = getDocumentsDirectory().appendingPathComponent("words")
-                let words = try JSONEncoder().encode(self.words)
-                try words.write(to: fileName, options: [.atomicWrite, .completeFileProtection])
-            }
-            catch {
-                print("\(error.localizedDescription)")
-            }
+            save()
+            filter(by: filterState)
         }
     }
     
@@ -80,11 +77,17 @@ class Dictionary: ObservableObject {
                 case .def:
                     self.sortingState = .def
                     self.words.sort {
-                        $0.id < $1.id
+                        $0.date < $1.date
+                    }
+                    self.filteredWords.sort {
+                        $0.date < $1.date
                     }
                 case .name:
                     self.sortingState = .name
                     self.words.sort {
+                        $0.word < $1.word
+                    }
+                    self.filteredWords.sort {
                         $0.word < $1.word
                     }
                 case .partOfSpeech:
@@ -92,13 +95,48 @@ class Dictionary: ObservableObject {
                     self.words.sort {
                         $0.partOfSpeech < $1.partOfSpeech
                     }
+                    self.filteredWords.sort {
+                        $0.partOfSpeech < $1.partOfSpeech
+                    }
                 }
             }
         }
     }
     
-    func filter() {
-        
+    func filter(by filter: FilterCases) {
+        DispatchQueue.main.async {
+            withAnimation() {
+                var startArray = self.words
+                
+                switch filter {
+                case .none:
+                    self.filterState = .none
+                    startArray = self.words
+                case .noun:
+                    self.filterState = .noun
+                    startArray = self.words
+                    startArray.removeAll(where: {$0.partOfSpeech != "noun"})
+                case .verb:
+                    self.filterState = .verb
+                    startArray = self.words
+                    startArray.removeAll(where: {$0.partOfSpeech != "verb"})
+                case .adjective:
+                    self.filterState = .adjective
+                    startArray = self.words
+                    startArray.removeAll(where: {$0.partOfSpeech != "adjective"})
+                case .adverb:
+                    self.filterState = .adverb
+                    startArray = self.words
+                    startArray.removeAll(where: {$0.partOfSpeech != "adverb"})
+                case .exclamation:
+                    self.filterState = .exclamation
+                    startArray = self.words
+                    startArray.removeAll(where: {$0.partOfSpeech != "exclamation"})
+                }
+                
+                self.filteredWords = startArray
+            }
+        }
     }
     
     func getWords() {
@@ -113,8 +151,15 @@ class Dictionary: ObservableObject {
         }
     }
     
-    var idForWord: Int {
-        words.count
+    func save() {
+        do {
+            let fileName = getDocumentsDirectory().appendingPathComponent("words")
+            let words = try JSONEncoder().encode(self.words)
+            try words.write(to: fileName, options: [.atomicWrite, .completeFileProtection])
+        }
+        catch {
+            print("\(error.localizedDescription)")
+        }
     }
 }
 
@@ -132,6 +177,7 @@ enum SortingCases {
 }
 
 enum FilterCases {
+    case none
     case noun
     case verb
     case adjective

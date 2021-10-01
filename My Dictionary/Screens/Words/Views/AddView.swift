@@ -121,7 +121,7 @@ struct AddView: View {
             .navigationBarTitle("Add new word")
             .navigationBarItems(trailing: Button(action: {
                 if !vm.inputWord.isEmpty, !descriptionField.isEmpty {
-                    let newWord = WordModel(id: vm.idForWord, word: vm.inputWord, description: descriptionField, partOfSpeech: partOfSpeech, examples: [], wordElement: vm.resultWordDetails)
+                    let newWord = WordModel(word: vm.inputWord, description: descriptionField, partOfSpeech: partOfSpeech.isEmpty ? "unknown" : partOfSpeech, examples: [], wordElement: vm.resultWordDetails)
                     vm.words.append(newWord)
                     self.presentationMode.wrappedValue.dismiss()
                     vm.resultWordDetails = nil

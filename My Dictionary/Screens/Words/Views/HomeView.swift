@@ -16,7 +16,7 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(vm.words, id: \.id) { word in
+                    ForEach(vm.isFiltered ? vm.filteredWords : vm.words, id: \.id) { word in
                         NavigationLink(
                             destination: WordDetailView(vm: vm, wordData: word),
                             label: {
@@ -29,7 +29,8 @@ struct HomeView: View {
                                 }
                                 
                             })
-                    }.onDelete(perform: removeItems)
+                    }
+                    .onDelete(perform: removeItems)
                 }
             }
             .navigationBarTitle("My Dictionary")
@@ -69,28 +70,57 @@ struct HomeView: View {
                 
                 Menu {
                     Button {
-                        //
+                        vm.isFiltered = false
+                        vm.filter(by: .none)
                     } label: {
+                        if vm.filterState == .none {
+                            Image(systemName: "checkmark")
+                        }
+                        Text("Off")
+                    }
+                    Button {
+                        vm.isFiltered = true
+                        vm.filter(by: .noun)
+                    } label: {
+                        if vm.filterState == .noun {
+                            Image(systemName: "checkmark")
+                        }
                         Text("noun")
                     }
                     Button {
-                        //
+                        vm.isFiltered = true
+                        vm.filter(by: .verb)
                     } label: {
+                        if vm.filterState == .verb {
+                            Image(systemName: "checkmark")
+                        }
                         Text("verb")
                     }
                     Button {
-                        //
+                        vm.isFiltered = true
+                        vm.filter(by: .adjective)
                     } label: {
+                        if vm.filterState == .adjective {
+                            Image(systemName: "checkmark")
+                        }
                         Text("adjective")
                     }
                     Button {
-                        //
+                        vm.isFiltered = true
+                        vm.filter(by: .adverb)
                     } label: {
+                        if vm.filterState == .adverb {
+                            Image(systemName: "checkmark")
+                        }
                         Text("adverb")
                     }
                     Button {
-                        //
+                        vm.isFiltered = true
+                        vm.filter(by: .exclamation)
                     } label: {
+                        if vm.filterState == .exclamation {
+                            Image(systemName: "checkmark")
+                        }
                         Text("exclamation")
                     }
                 } label: {
@@ -116,7 +146,18 @@ struct HomeView: View {
     }
     
     func removeItems(of offsets: IndexSet) {
-        vm.words.remove(atOffsets: offsets)
+        if !vm.isFiltered {
+            vm.words.remove(atOffsets: offsets)
+        } else {
+            //remember id of word that i wanna delete
+            let id = vm.filteredWords[offsets.first!].id
+            //delete that word from temporary array
+            vm.filteredWords.remove(atOffsets: offsets)
+            //find this word in primary array and delete is as well
+            if let wordIndex = vm.words.firstIndex(where: { $0.id == id }) {
+                vm.words.remove(at: wordIndex)
+            }
+        }
     }
 }
 
