@@ -123,6 +123,24 @@ struct HomeView: View {
                         }
                         Text("exclamation")
                     }
+                    Button {
+                        vm.isFiltered = true
+                        vm.filter(by: .conjunction)
+                    } label: {
+                        if vm.filterState == .conjunction {
+                            Image(systemName: "checkmark")
+                        }
+                        Text("conjunction")
+                    }
+                    Button {
+                        vm.isFiltered = true
+                        vm.filter(by: .pronoun)
+                    } label: {
+                        if vm.filterState == .pronoun {
+                            Image(systemName: "checkmark")
+                        }
+                        Text("pronoun")
+                    }
                 } label: {
                     Label {
                         Text("Filter By")

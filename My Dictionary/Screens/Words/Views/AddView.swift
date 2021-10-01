@@ -12,7 +12,7 @@ struct AddView: View {
     
     @ObservedObject var vm: Dictionary
     @State private var descriptionField = ""
-    @State private var partOfSpeech = ""
+    @State private var partOfSpeech: PartOfSpeech = .unknown
     @State private var showingAlert = false
     
     var body: some View {
@@ -37,10 +37,13 @@ struct AddView: View {
                     TextField("Word's definition", text: $descriptionField)
                         .padding(.horizontal)
                     Divider().padding(.leading)
-                    TextField("Part of speech", text: $partOfSpeech)
-                        .autocapitalization(.none)
+                    Text(partOfSpeech == .unknown ? "Part of speech" : partOfSpeech.rawValue)
                         .padding(.horizontal)
-                        .cornerRadius(10)
+                        .foregroundColor(
+                            partOfSpeech == .unknown
+                            ? Color("TextFieldColor")
+                            : Color.primary
+                        )
                     Divider().padding(.leading)
                     Button(action: {
                         if !vm.inputWord.isEmpty {
@@ -72,7 +75,26 @@ struct AddView: View {
                         WordCard(
                             wordMeanings: vm.resultWordDetails!.meanings, tapGesture: { descriptionStr, partOfSpeechStr in
                                 descriptionField = descriptionStr
-                                partOfSpeech = partOfSpeechStr
+                                
+                                switch partOfSpeechStr {
+                                case "noun":
+                                    partOfSpeech = .noun
+                                case "verb":
+                                    partOfSpeech = .verb
+                                case "adjective":
+                                    partOfSpeech = .adjective
+                                case "adverb":
+                                    partOfSpeech = .adverb
+                                case "exclamation":
+                                    partOfSpeech = .exclamation
+                                case "conjunction":
+                                    partOfSpeech = .conjunction
+                                case "pronoun":
+                                    partOfSpeech = .pronoun
+                                default:
+                                    partOfSpeech = .unknown
+                                }
+                                
                             })
                     } else if vm.status == .loading {
                         VStack {
@@ -115,13 +137,13 @@ struct AddView: View {
             .background(Color("Background")
                             .ignoresSafeArea()
                             .onTapGesture(perform: {
-                hideKeyboard()
-            })
+                        hideKeyboard()
+                    })
             )
             .navigationBarTitle("Add new word")
             .navigationBarItems(trailing: Button(action: {
                 if !vm.inputWord.isEmpty, !descriptionField.isEmpty {
-                    let newWord = WordModel(word: vm.inputWord, description: descriptionField, partOfSpeech: partOfSpeech.isEmpty ? "unknown" : partOfSpeech, examples: [], wordElement: vm.resultWordDetails)
+                    let newWord = WordModel(word: vm.inputWord, description: descriptionField, partOfSpeech: partOfSpeech.rawValue, examples: [], wordElement: vm.resultWordDetails)
                     vm.words.append(newWord)
                     self.presentationMode.wrappedValue.dismiss()
                     vm.resultWordDetails = nil
@@ -147,4 +169,13 @@ struct AddView_Previews: PreviewProvider {
     }
 }
 
-
+enum PartOfSpeech: String, CaseIterable {
+    case noun
+    case verb
+    case adjective
+    case adverb
+    case exclamation
+    case conjunction
+    case pronoun
+    case unknown
+}

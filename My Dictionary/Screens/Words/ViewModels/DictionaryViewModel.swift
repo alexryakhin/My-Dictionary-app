@@ -132,6 +132,14 @@ class Dictionary: ObservableObject {
                     self.filterState = .exclamation
                     startArray = self.words
                     startArray.removeAll(where: {$0.partOfSpeech != "exclamation"})
+                case .conjunction:
+                    self.filterState = .conjunction
+                    startArray = self.words
+                    startArray.removeAll(where: {$0.partOfSpeech != "conjunction"})
+                case .pronoun:
+                    self.filterState = .pronoun
+                    startArray = self.words
+                    startArray.removeAll(where: {$0.partOfSpeech != "pronoun"})
                 }
                 
                 self.filteredWords = startArray
@@ -183,4 +191,6 @@ enum FilterCases {
     case adjective
     case adverb
     case exclamation
+    case conjunction
+    case pronoun
 }
