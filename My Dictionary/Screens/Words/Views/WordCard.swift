@@ -61,10 +61,9 @@ struct WordCard: View {
                         }
                     }
                     .padding(.horizontal)
-//                    .padding(.bottom)
                 }
-                .frame(width: UIScreen.main.bounds.width)
-            }.tabViewStyle(.page)
+            }
+            .tabViewStyle(.page)
         }
     }
 }
