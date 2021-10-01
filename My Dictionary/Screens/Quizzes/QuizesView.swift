@@ -12,24 +12,48 @@ struct QuizesView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                Section {
-                    NavigationLink {
-                        SpellingQuizView(vm: vm)
-                    } label: {
-                        Text("Spelling")
+            if vm.words.count < 9 {
+                ZStack {
+                    Color("Background").ignoresSafeArea()
+                    VStack {
+                        Spacer().frame(height: 100)
+                        Image(systemName: "applescript")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 150, height: 150)
+                            .foregroundColor(.secondary)
+                            .padding(.bottom, 60)
+                        
+                        Text("Add at least 10 words\nto your list to play!")
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(10)
+                            .font(.title3)
+                            .foregroundColor(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                        Spacer()
                     }
-                    
-                    NavigationLink {
-                        ChooseDefinitionView(vm: vm)
-                    } label: {
-                        Text("Choose the right definition")
+                }.navigationTitle("Quizzes")
+            } else {
+                List {
+                    Section {
+                        NavigationLink {
+                            SpellingQuizView(vm: vm)
+                        } label: {
+                            Text("Spelling")
+                        }
+                        
+                        NavigationLink {
+                            ChooseDefinitionView(vm: vm)
+                        } label: {
+                            Text("Choose the right definition")
+                        }
+                    } footer: {
+                        Text("All words are from your list.")
                     }
-                } footer: {
-                    Text("All words are from your list.")
-                }
+                }.navigationTitle("Quizzes")
             }
-            .navigationTitle("Quizzes")
+            
+            
         }
         .onAppear {
             if vm.words.isEmpty {

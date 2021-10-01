@@ -15,22 +15,46 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List {
-                    ForEach(vm.isFiltered ? vm.filteredWords : vm.words, id: \.id) { word in
-                        NavigationLink(
-                            destination: WordDetailView(vm: vm, wordData: word),
-                            label: {
-                                HStack {
-                                    Text("\(word.word)")
-                                        .bold()
-                                    Spacer()
-                                    Text("\(word.partOfSpeech)")
-                                        .foregroundColor(.secondary)
-                                }
-                                
-                            })
+                if vm.words.isEmpty {
+                    ZStack {
+                        Color("Background").ignoresSafeArea()
+                        VStack {
+                            Spacer().frame(height: 100)
+                            Image(systemName: "applescript")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 150, height: 150)
+                                .foregroundColor(.secondary)
+                                .padding(.bottom, 60)
+                            
+                            Text("Begin to add words to your list by tapping on plus icon in upper left corner")
+                                .padding(20)
+                                .multilineTextAlignment(.center)
+                                .lineSpacing(10)
+                                .font(.title3)
+                                .foregroundColor(.secondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                            Spacer()
+                        }
                     }
-                    .onDelete(perform: removeItems)
+                } else {
+                    List {
+                        ForEach(vm.isFiltered ? vm.filteredWords : vm.words, id: \.id) { word in
+                            NavigationLink(
+                                destination: WordDetailView(vm: vm, wordData: word),
+                                label: {
+                                    HStack {
+                                        Text("\(word.word)")
+                                            .bold()
+                                        Spacer()
+                                        Text("\(word.partOfSpeech)")
+                                            .foregroundColor(.secondary)
+                                    }
+                                    
+                                })
+                        }
+                        .onDelete(perform: removeItems)
+                    }
                 }
             }
             .navigationBarTitle("My Dictionary")
