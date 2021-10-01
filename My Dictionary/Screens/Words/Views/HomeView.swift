@@ -33,7 +33,76 @@ struct HomeView: View {
                 }
             }
             .navigationBarTitle("My Dictionary")
-            .navigationBarItems(trailing: Button(action: {
+            .navigationBarItems(leading: Menu(content: {
+                Menu {
+                    Button {
+                        vm.sort(by: .def)
+                    } label: {
+                        if vm.sortingState == .def {
+                            Image(systemName: "checkmark")
+                        }
+                        Text("Default")
+                    }
+                    Button {
+                        vm.sort(by: .name)
+                    } label: {
+                        if vm.sortingState == .name {
+                            Image(systemName: "checkmark")
+                        }
+                        Text("Name")
+                    }
+                    Button {
+                        vm.sort(by: .partOfSpeech)
+                    } label: {
+                        if vm.sortingState == .partOfSpeech {
+                            Image(systemName: "checkmark")
+                        }
+                        Text("Part of speech")
+                    }
+                } label: {
+                    Label {
+                        Text("Sort By")
+                    } icon: {
+                        Image(systemName: "arrow.up.arrow.down")
+                    }
+                }
+                
+                Menu {
+                    Button {
+                        //
+                    } label: {
+                        Text("noun")
+                    }
+                    Button {
+                        //
+                    } label: {
+                        Text("verb")
+                    }
+                    Button {
+                        //
+                    } label: {
+                        Text("adjective")
+                    }
+                    Button {
+                        //
+                    } label: {
+                        Text("adverb")
+                    }
+                    Button {
+                        //
+                    } label: {
+                        Text("exclamation")
+                    }
+                } label: {
+                    Label {
+                        Text("Filter By")
+                    } icon: {
+                        Image(systemName: "slider.horizontal.3")
+                    }
+                }
+            }, label: {
+                Image(systemName: "ellipsis.circle")
+            }), trailing: Button(action: {
                 showingAddSheet = true
             }, label: {
                 Image(systemName: "plus")

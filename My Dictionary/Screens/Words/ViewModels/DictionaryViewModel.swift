@@ -13,6 +13,7 @@ class Dictionary: ObservableObject {
     @Published var status: FetchingStatus = .blank
     @Published var inputWord: String = ""
     @Published var resultWordDetails: WordElement?
+    @Published var sortingState: SortingCases = .def
     @Published var definitions: [String] = []
     @Published var words: [WordModel] = [] {
         didSet {
@@ -28,15 +29,7 @@ class Dictionary: ObservableObject {
     }
     
     init() {
-        let fileName = getDocumentsDirectory().appendingPathComponent("words")
-
-        do {
-            let words = try Data(contentsOf: fileName)
-            self.words = try JSONDecoder().decode([WordModel].self, from: words)
-        }
-        catch {
-            print("\(error.localizedDescription)")
-        }
+        getWords()
     }
         
     private func getDocumentsDirectory() -> URL {
@@ -79,6 +72,50 @@ class Dictionary: ObservableObject {
             return
         }
     }
+    
+    func sort(by what: SortingCases) {
+        DispatchQueue.main.async {
+            withAnimation() {
+                switch what {
+                case .def:
+                    self.sortingState = .def
+                    self.words.sort {
+                        $0.id < $1.id
+                    }
+                case .name:
+                    self.sortingState = .name
+                    self.words.sort {
+                        $0.word < $1.word
+                    }
+                case .partOfSpeech:
+                    self.sortingState = .partOfSpeech
+                    self.words.sort {
+                        $0.partOfSpeech < $1.partOfSpeech
+                    }
+                }
+            }
+        }
+    }
+    
+    func filter() {
+        
+    }
+    
+    func getWords() {
+        let fileName = getDocumentsDirectory().appendingPathComponent("words")
+
+        do {
+            let words = try Data(contentsOf: fileName)
+            self.words = try JSONDecoder().decode([WordModel].self, from: words)
+        }
+        catch {
+            print("\(error.localizedDescription)")
+        }
+    }
+    
+    var idForWord: Int {
+        words.count
+    }
 }
 
 enum FetchingStatus {
@@ -86,4 +123,18 @@ enum FetchingStatus {
     case ready
     case loading
     case error
+}
+
+enum SortingCases {
+    case def
+    case name
+    case partOfSpeech
+}
+
+enum FilterCases {
+    case noun
+    case verb
+    case adjective
+    case adverb
+    case exclamation
 }
