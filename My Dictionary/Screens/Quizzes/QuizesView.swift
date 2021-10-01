@@ -12,7 +12,7 @@ struct QuizesView: View {
     
     var body: some View {
         NavigationView {
-            if vm.words.count < 9 {
+            if vm.words.count < 10 {
                 ZStack {
                     Color("Background").ignoresSafeArea()
                     VStack {
@@ -56,9 +56,7 @@ struct QuizesView: View {
             
         }
         .onAppear {
-            if vm.words.isEmpty {
-                vm.getWords()
-            }
+            vm.getWords()
         }
     }
 }
