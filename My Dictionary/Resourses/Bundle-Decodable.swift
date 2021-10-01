@@ -1,6 +1,6 @@
 //
 //  Bundle-Decodable.swift
-//  Moonshot
+//  My Dictionary
 //
 //  Created by Alexander Ryakhin on 5/12/21.
 //

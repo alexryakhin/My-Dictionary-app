@@ -1,9 +1,8 @@
 //
 //  CurrentUser.swift
-//  garage-kids-ios
+//  My Dictionary
 //
-//  Created by Alexey Titov on 8/7/19.
-//  Copyright © 2019 TRINITY digital. All rights reserved.
+//  Created by Alexander Ryakhin on 10/1/21.
 //
 
 import Foundation
