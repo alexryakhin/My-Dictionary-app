@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @State private var showingOnboarding: Bool = !CurrentUser.shared.hasSeenOnboarding
+    
     var body: some View {
         TabView {
             HomeView()
@@ -18,6 +20,11 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Quiz", systemImage: "a.magnify")
                 }
+        }
+        .sheet(isPresented: $showingOnboarding, onDismiss: {
+            CurrentUser.shared.hasSeenOnboarding = true
+        }) {
+            OnboardingView()
         }
     }
 }

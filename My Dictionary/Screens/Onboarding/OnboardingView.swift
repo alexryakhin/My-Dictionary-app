@@ -33,7 +33,7 @@ struct OnboardingView: View {
                                 Text(oCase.title)
                                     .font(.headline)
                                 Text(oCase.subTitle)
-                                    .font(.system(size: 17))
+                                    .font(.system(size: 15))
                                     .foregroundColor(.secondary)
                                     .fixedSize(horizontal: false, vertical: true)
                             }
@@ -47,6 +47,7 @@ struct OnboardingView: View {
                 Button {
                     //hide
                     presentationMode.wrappedValue.dismiss()
+                    CurrentUser.shared.hasSeenOnboarding = true
                 } label: {
                     Text("Continue")
                         .bold()

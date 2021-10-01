@@ -11,7 +11,6 @@ struct HomeView: View {
     
     @StateObject var vm = Dictionary()
     @State private var showingAddSheet = false
-    @State private var showingOnboarding = false
     
     var body: some View {
         NavigationView {
@@ -34,11 +33,7 @@ struct HomeView: View {
                 }
             }
             .navigationBarTitle("My Dictionary")
-            .navigationBarItems(leading: Button(action: {
-                showingOnboarding = true
-            }, label: {
-                Image(systemName: "hand.raised")
-            }), trailing: Button(action: {
+            .navigationBarItems(trailing: Button(action: {
                 showingAddSheet = true
             }, label: {
                 Image(systemName: "plus")
@@ -47,9 +42,6 @@ struct HomeView: View {
             )
             .sheet(isPresented: $showingAddSheet) {
                 AddView(vm: vm)
-            }
-            .sheet(isPresented: $showingOnboarding) {
-                OnboardingView()
             }
         }
     }

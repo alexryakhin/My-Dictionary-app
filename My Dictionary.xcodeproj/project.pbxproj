@@ -17,6 +17,7 @@
 		514909492705CEBB0052881D /* ChooseDefinitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514909482705CEBB0052881D /* ChooseDefinitionView.swift */; };
 		5149094B2705CF6F0052881D /* QuizzesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5149094A2705CF6F0052881D /* QuizzesViewModel.swift */; };
 		5149094E2705FD310052881D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5149094D2705FD310052881D /* OnboardingView.swift */; };
+		514DC393270708D300606C23 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514DC392270708D300606C23 /* CurrentUser.swift */; };
 		51E5F3722689F1DA009D31CE /* Wordword.json in Resources */ = {isa = PBXBuildFile; fileRef = 51E5F3712689F1DA009D31CE /* Wordword.json */; };
 		51FDD2A4267EE03D00B946DB /* My_DictionaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FDD2A3267EE03D00B946DB /* My_DictionaryApp.swift */; };
 		51FDD2A8267EE03F00B946DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51FDD2A7267EE03F00B946DB /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		514909482705CEBB0052881D /* ChooseDefinitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDefinitionView.swift; sourceTree = "<group>"; };
 		5149094A2705CF6F0052881D /* QuizzesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesViewModel.swift; sourceTree = "<group>"; };
 		5149094D2705FD310052881D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		514DC392270708D300606C23 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		51E5F3702689ED84009D31CE /* HelloWord.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HelloWord.json; sourceTree = "<group>"; };
 		51E5F3712689F1DA009D31CE /* Wordword.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Wordword.json; sourceTree = "<group>"; };
 		51FDD2A0267EE03D00B946DB /* My Dictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Dictionary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,7 @@
 				51FDD2A7267EE03F00B946DB /* Assets.xcassets */,
 				51E5F3712689F1DA009D31CE /* Wordword.json */,
 				51E5F3702689ED84009D31CE /* HelloWord.json */,
+				514DC392270708D300606C23 /* CurrentUser.swift */,
 				513F5C8D2703407B00A9B0F5 /* Bundle-Decodable.swift */,
 			);
 			path = Resourses;
@@ -277,6 +280,7 @@
 				513F5C8A27032A2500A9B0F5 /* WordDetailView.swift in Sources */,
 				51FDD2A4267EE03D00B946DB /* My_DictionaryApp.swift in Sources */,
 				513F5C8C2703404700A9B0F5 /* WordCard.swift in Sources */,
+				514DC393270708D300606C23 /* CurrentUser.swift in Sources */,
 				514909412705B3140052881D /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
