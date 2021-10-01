@@ -44,6 +44,16 @@ struct AddView: View {
                             ? Color("TextFieldColor")
                             : Color.primary
                         )
+                        .contextMenu {
+                            ForEach(PartOfSpeech.allCases, id: \.self) { c in
+                                Button {
+                                    partOfSpeech = c
+                                } label: {
+                                    Text(c.rawValue)
+                                }
+
+                            }
+                        }
                     Divider().padding(.leading)
                     Button(action: {
                         if !vm.inputWord.isEmpty {

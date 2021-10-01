@@ -20,6 +20,18 @@ struct WordDetailView: View {
         List {
             Section {
                 Text(wordData.partOfSpeech)
+                    .contextMenu {
+                        ForEach(PartOfSpeech.allCases, id: \.self) { c in
+                            Button {
+                                if let wordIndex = wordIndex {
+                                    vm.words[wordIndex].partOfSpeech = c.rawValue
+                                }
+                            } label: {
+                                Text(c.rawValue)
+                            }
+
+                        }
+                    }
             } header: {
                 Text("Part Of Speech")
             }
