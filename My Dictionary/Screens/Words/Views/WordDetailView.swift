@@ -131,11 +131,11 @@ struct WordDetailView: View {
         }),
            trailing: Button(action: {
             //delete
-            presentationMode.wrappedValue.dismiss()
             removeWord()
         }, label: {
-            Image(systemName: "trash").foregroundColor(.red)
-        }))
+            Image(systemName: "trash")
+                .foregroundColor(vm.words.count <= 1 ? .secondary : .red)
+        }).disabled(vm.words.count <= 1))
         .onAppear {
             if let wordIndex = wordIndex {
                 examples = vm.words[wordIndex].examples
@@ -153,7 +153,8 @@ struct WordDetailView: View {
     }
     
     private func removeWord() {
-        if let wordIndex = wordIndex {
+        if let wordIndex = wordIndex, vm.words.count > 1 {
+            presentationMode.wrappedValue.dismiss()
             vm.words.remove(at: wordIndex)
         }
     }
