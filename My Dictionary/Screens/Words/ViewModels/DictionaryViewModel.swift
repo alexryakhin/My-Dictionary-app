@@ -39,14 +39,18 @@ class Dictionary: ObservableObject {
         if inputWord != "" {
             let stringURL = "https://api.dictionaryapi.dev/api/v2/entries/en/\(inputWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))"
             guard let url = URL(string: stringURL) else {
-                print("incorrect url")
+                DispatchQueue.main.async {
+                    self.status = .error
+                }
                 return
             }
             var request = URLRequest(url: url)
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             URLSession.shared.dataTask(with: request) { data, response, error in
                 guard let data = data else {
-                    print("can't get data")
+                    DispatchQueue.main.async {
+                        self.status = .error
+                    }
                     return
                 }
                 
@@ -66,7 +70,6 @@ class Dictionary: ObservableObject {
                 }
             }.resume()
         } else {
-            print("type a word")
             return
         }
     }

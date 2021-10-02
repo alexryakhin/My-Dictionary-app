@@ -141,8 +141,9 @@ struct AddView: View {
                     } else if vm.status == .blank {
                         VStack {
                             Spacer().frame(height: 50)
-                            Text("*After the data shows up here, tap on word's definition to fill it into definition's field")
-                                .font(.caption)
+                            Text("*After the data shows up here, tap on word's definition to fill it into definition's field.")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
                                 .padding()
                             Spacer()
                         }
@@ -152,8 +153,9 @@ struct AddView: View {
                     } else if vm.status == .error {
                         VStack {
                             Spacer().frame(height: 50)
-                            Text("Couldn't get the word's data, check your spelling")
-                                .bold()
+                            Text("Couldn't get the word's data, check your spelling. Or you lost your internet connection, so check this out as well.")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
                                 .padding()
                             Spacer()
                         }
