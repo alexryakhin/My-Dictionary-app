@@ -53,7 +53,7 @@ struct SpellingQuizView: View {
         }
         .navigationTitle("Spelling")
         .onAppear {
-            randomWord = vm.words.randomElement()
+            randomWord = vm.spellQuizWords.randomElement()
         }
         .onDisappear(perform: {
             vm.getWords()
@@ -82,7 +82,7 @@ struct SpellingQuizView: View {
             return
         }
         
-        guard let wordIndex = vm.words.firstIndex(where: {
+        guard let wordIndex = vm.spellQuizWords.firstIndex(where: {
             $0.id == randomWord.id
         }) else {
             return
@@ -91,10 +91,10 @@ struct SpellingQuizView: View {
         if answerTextField.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == randomWord.word.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) {
             isRightAnswer = true
             answerTextField = ""
-            vm.words.remove(at: wordIndex)
+            vm.spellQuizWords.remove(at: wordIndex)
             attemptCount = 0
-            if !vm.words.isEmpty {
-                self.randomWord = vm.words.randomElement()
+            if !vm.spellQuizWords.isEmpty {
+                self.randomWord = vm.spellQuizWords.randomElement()
             } else {
                 isShowAlert = true
             }

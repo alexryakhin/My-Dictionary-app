@@ -31,7 +31,6 @@ struct WordCard: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal)
-            .padding(.top)
             
             TabView() {
                 ForEach(indices, id: \.self) { index in

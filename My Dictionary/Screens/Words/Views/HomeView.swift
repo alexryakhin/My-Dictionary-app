@@ -39,21 +39,27 @@ struct HomeView: View {
                     }
                 } else {
                     List {
-                        ForEach(vm.isFiltered ? vm.filteredWords : vm.words, id: \.id) { word in
-                            NavigationLink(
-                                destination: WordDetailView(vm: vm, wordData: word),
-                                label: {
-                                    HStack {
-                                        Text("\(word.word)")
-                                            .bold()
-                                        Spacer()
-                                        Text("\(word.partOfSpeech)")
-                                            .foregroundColor(.secondary)
-                                    }
-                                    
-                                })
-                        }
-                        .onDelete(perform: removeItems)
+                        Section {
+                            ForEach(vm.isFiltered ? vm.filteredWords : vm.words, id: \.id) { word in
+                                NavigationLink(
+                                    destination: WordDetailView(vm: vm, wordData: word),
+                                    label: {
+                                        HStack {
+                                            Text("\(word.word)")
+                                                .bold()
+                                            Spacer()
+                                            Text("\(word.partOfSpeech)")
+                                                .foregroundColor(.secondary)
+                                        }
+                                        
+                                    })
+                            }
+                            .onDelete(perform: removeItems)
+                        } header: {
+                            Text(headerText)
+                        } footer: {
+                            Text(footerText)
+                        }   
                     }
                 }
             }
@@ -93,86 +99,92 @@ struct HomeView: View {
                 }
                 
                 Menu {
-                    Button {
-                        vm.isFiltered = false
-                        vm.filter(by: .none)
-                    } label: {
-                        if vm.filterState == .none {
-                            Image(systemName: "checkmark")
+                    Section {
+                        Button {
+                            vm.isFiltered = false
+                            vm.filter(by: .none)
+                        } label: {
+                            if vm.filterState == .none {
+                                Image(systemName: "checkmark")
+                            }
+                            Text("Off")
                         }
-                        Text("Off")
                     }
-                    Button {
-                        vm.isFiltered = true
-                        vm.filter(by: .noun)
-                    } label: {
-                        if vm.filterState == .noun {
-                            Image(systemName: "checkmark")
+                    Section {
+                        Button {
+                            vm.isFiltered = true
+                            vm.filter(by: .noun)
+                        } label: {
+                            if vm.filterState == .noun {
+                                Image(systemName: "checkmark")
+                            }
+                            Text("Noun")
                         }
-                        Text("noun")
+                        Button {
+                            vm.isFiltered = true
+                            vm.filter(by: .verb)
+                        } label: {
+                            if vm.filterState == .verb {
+                                Image(systemName: "checkmark")
+                            }
+                            Text("Verb")
+                        }
+                        Button {
+                            vm.isFiltered = true
+                            vm.filter(by: .adjective)
+                        } label: {
+                            if vm.filterState == .adjective {
+                                Image(systemName: "checkmark")
+                            }
+                            Text("Adjective")
+                        }
+                        Button {
+                            vm.isFiltered = true
+                            vm.filter(by: .adverb)
+                        } label: {
+                            if vm.filterState == .adverb {
+                                Image(systemName: "checkmark")
+                            }
+                            Text("Adverb")
+                        }
+                        Button {
+                            vm.isFiltered = true
+                            vm.filter(by: .exclamation)
+                        } label: {
+                            if vm.filterState == .exclamation {
+                                Image(systemName: "checkmark")
+                            }
+                            Text("Exclamation")
+                        }
+                        Button {
+                            vm.isFiltered = true
+                            vm.filter(by: .conjunction)
+                        } label: {
+                            if vm.filterState == .conjunction {
+                                Image(systemName: "checkmark")
+                            }
+                            Text("Conjunction")
+                        }
+                        Button {
+                            vm.isFiltered = true
+                            vm.filter(by: .pronoun)
+                        } label: {
+                            if vm.filterState == .pronoun {
+                                Image(systemName: "checkmark")
+                            }
+                            Text("Pronoun")
+                        }
                     }
-                    Button {
-                        vm.isFiltered = true
-                        vm.filter(by: .verb)
-                    } label: {
-                        if vm.filterState == .verb {
-                            Image(systemName: "checkmark")
+                    Section {
+                        Button {
+                            vm.isFiltered = true
+                            vm.filter(by: .favorite)
+                        } label: {
+                            if vm.filterState == .favorite {
+                                Image(systemName: "checkmark")
+                            }
+                            Text("Favorite")
                         }
-                        Text("verb")
-                    }
-                    Button {
-                        vm.isFiltered = true
-                        vm.filter(by: .adjective)
-                    } label: {
-                        if vm.filterState == .adjective {
-                            Image(systemName: "checkmark")
-                        }
-                        Text("adjective")
-                    }
-                    Button {
-                        vm.isFiltered = true
-                        vm.filter(by: .adverb)
-                    } label: {
-                        if vm.filterState == .adverb {
-                            Image(systemName: "checkmark")
-                        }
-                        Text("adverb")
-                    }
-                    Button {
-                        vm.isFiltered = true
-                        vm.filter(by: .exclamation)
-                    } label: {
-                        if vm.filterState == .exclamation {
-                            Image(systemName: "checkmark")
-                        }
-                        Text("exclamation")
-                    }
-                    Button {
-                        vm.isFiltered = true
-                        vm.filter(by: .conjunction)
-                    } label: {
-                        if vm.filterState == .conjunction {
-                            Image(systemName: "checkmark")
-                        }
-                        Text("conjunction")
-                    }
-                    Button {
-                        vm.isFiltered = true
-                        vm.filter(by: .pronoun)
-                    } label: {
-                        if vm.filterState == .pronoun {
-                            Image(systemName: "checkmark")
-                        }
-                        Text("pronoun")
-                    }
-                    Button {
-                        vm.isFiltered = true
-                        vm.filter(by: .favorite)
-                    } label: {
-                        if vm.filterState == .favorite {
-                            Image(systemName: "checkmark")
-                        }
-                        Text("favorite")
                     }
                 } label: {
                     Label {
@@ -207,6 +219,34 @@ struct HomeView: View {
             //find this word in primary array and delete is as well
             if let wordIndex = vm.words.firstIndex(where: { $0.id == id }) {
                 vm.words.remove(at: wordIndex)
+            }
+        }
+    }
+    
+    private var headerText: String {
+        if vm.isFiltered {
+            return "Filtered by: \(vm.filterState)"
+        } else {
+            return "All words"
+        }
+    }
+    
+    private var footerText: String {
+        if vm.isFiltered {
+            switch vm.filteredWords.count {
+            case 0:
+                return "Your list contains no words."
+            case 1:
+                return "Your list contains 1 word."
+            default:
+                return "Your list contains \(vm.filteredWords.count) words."
+            }
+        } else {
+            switch vm.words.count {
+            case 1:
+                return "Your list contains 1 word."
+            default:
+                return "Your list contains \(vm.words.count) words."
             }
         }
     }

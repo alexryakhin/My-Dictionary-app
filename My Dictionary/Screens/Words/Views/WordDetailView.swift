@@ -17,7 +17,31 @@ struct WordDetailView: View {
     @State private var examples = [String]()
     
     var body: some View {
+        let bindingWordDefinition = Binding (
+            get: { vm.words[wordIndex ?? 0].description },
+            set: {
+                if let wordIndex = wordIndex {
+                    vm.words[wordIndex].description = $0
+                }
+            }
+        )
+        
         List {
+            if wordData.wordElement != nil {
+                Section {
+                    HStack {
+                        Text("[\(wordData.wordElement?.phonetic ?? "No transcription")]")
+                        Spacer()
+                        Button {
+                            AudioManager.shared.playback(phonetics: wordData.wordElement!.phonetics)
+                        } label: {
+                            Image(systemName: "speaker.wave.2.fill")
+                        }
+                    }
+                } header: {
+                    Text("Phonetics")
+                }
+            }
             Section {
                 Text(wordData.partOfSpeech)
                     .contextMenu {
@@ -29,19 +53,29 @@ struct WordDetailView: View {
                             } label: {
                                 Text(c.rawValue)
                             }
-
                         }
                     }
             } header: {
                 Text("Part Of Speech")
             }
             Section {
-                Text(wordData.description)
-                    .contextMenu {
-                        Button("Edit", action: {
-                            isEditingDefinition = true
-                        })
-                    }
+                if isEditingDefinition {
+                    TextField("Definition", text: bindingWordDefinition, onCommit:  {
+                        withAnimation {
+                            isEditingDefinition = false
+                        }
+                    })
+                } else {
+                    Text(wordData.description)
+                        .contextMenu {
+                            Button("Edit", action: {
+                                withAnimation {
+                                    isEditingDefinition = true
+                                }
+                            })
+                        }
+                }
+                
             } header: {
                 Text("Definition")
             }
@@ -102,18 +136,6 @@ struct WordDetailView: View {
         }, label: {
             Image(systemName: "trash").foregroundColor(.red)
         }))
-        .sheet(isPresented: $isEditingDefinition) {
-            let bindingWordDefinition = Binding (
-                get: { wordData.description },
-                set: {
-                    if let wordIndex = wordIndex {
-                        vm.words[wordIndex].description = $0
-                    }
-                }
-            )
-            TextEditor(text: bindingWordDefinition)
-                .padding()
-        }
         .onAppear {
             if let wordIndex = wordIndex {
                 examples = vm.words[wordIndex].examples

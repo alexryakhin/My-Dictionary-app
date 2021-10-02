@@ -10,6 +10,7 @@ import SwiftUI
 class QuizzesViewModel: ObservableObject {
     
     @Published var words: [WordModel] = []
+    @Published var spellQuizWords: [WordModel] = []
     
     func getWords() {
         let fileName = getDocumentsDirectory().appendingPathComponent("words")
@@ -17,6 +18,7 @@ class QuizzesViewModel: ObservableObject {
         do {
             let words = try Data(contentsOf: fileName)
             self.words = try JSONDecoder().decode([WordModel].self, from: words)
+            self.spellQuizWords = try JSONDecoder().decode([WordModel].self, from: words)
         }
         catch {
             print("\(error.localizedDescription)")
