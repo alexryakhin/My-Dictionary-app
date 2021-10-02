@@ -59,6 +59,7 @@ class Dictionary: ObservableObject {
                     
                 } catch let error {
                     DispatchQueue.main.async {
+                        self.resultWordDetails = nil
                         self.status = .error
                     }
                     print(error.localizedDescription)
